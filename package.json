@@ -1,0 +1,30 @@
+{
+  "name": "gameHubBE",
+  "version": "1.0.0",
+  "description": "What a nice read me",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "knex": "knex"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronwthompson/gameHubBE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ronwthompson/gameHubBE/issues"
+  },
+  "homepage": "https://github.com/ronwthompson/gameHubBE#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "jsonwebtoken": "^8.1.0",
+    "knex": "^0.14.2",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.0"
+  }
+}
