@@ -12,10 +12,10 @@ exports.up = function(knex, Promise) {
     table.integer('game_id').notNullable().defaultsTo(0)
     table.foreign('game_id').references('games.id').onDelete('CASCADE')
 
-    table.integer('length_of_play').notNullable().defaultsTo(0)
+    table.integer('length_of_play').notNullable().defaultsTo(60)
     table.integer('competitiveness').notNullable().defaultsTo(0)
-    table.integer('size_of_group').notNullable().defaultsTo(0)
-    table.string('emoticon_mood').notNullable().defaultsTo('')
+    table.integer('size_of_group').notNullable().defaultsTo(2)
+    table.string('emoticon_mood').defaultsTo('poop')
   })
 };
 
