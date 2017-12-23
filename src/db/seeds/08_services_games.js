@@ -1,10 +1,10 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('service_game').del()
+  return knex('service_games').del()
     .then(function () {
       // Inserts seed entries
-      return knex('service_game').insert([
+      return knex('service_games').insert([
         {game_id: 1, service_id: 1},
         {game_id: 2, service_id: 1},
         {game_id: 3, service_id: 2},
@@ -14,4 +14,5 @@ exports.seed = function(knex, Promise) {
         {game_id: 2, service_id: 3},
         {game_id: 5, service_id: 3}
     ]);
+  });
 };
