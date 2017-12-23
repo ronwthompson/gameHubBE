@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     
     table.integer('service_id').notNullable().defaultsTo(0)
-    table.foreign('service_id').references('services.id').onDelete('CASCADE')
+    //table.foreign('service_id').references('services.id').onDelete('CASCADE')
 
     table.string('game_name').notNullable().defaultsTo('')
   })
