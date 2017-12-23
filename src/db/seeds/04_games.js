@@ -5,9 +5,12 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('games').insert([
-        {id: 1, service_id: 0, game_name: ''},
-        {id: 1, service_id: 0, game_name: ''},
-        {id: 1, service_id: 0, game_name: ''}
+        {service_id: 1, game_name: 'Counter Strike: Source'},
+        {service_id: 1, game_name: "Player Unknown's Battlegrounds"},
+        {service_id: 2, game_name: 'Hearthstone'},
+        {service_id: 2, game_name: 'Overwatch'},
+        {service_id: 3, game_name: 'Rocket League'},
+        {service_id: 3, game_name: 'Halo 5'}
       ]);
     });
 };

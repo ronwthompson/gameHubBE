@@ -13,6 +13,9 @@ exports.up = function(knex, Promise) {
     table.foreign('game_id').references('games.id').onDelete('CASCADE')
 
     // ?? more things ??
+
+    table.integer('wins').defaultsTo(null)
+    table.integer('losses').defaultsTo(null)
   })
 };
 

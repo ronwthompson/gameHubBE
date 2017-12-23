@@ -5,8 +5,13 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('service_game').insert([
-        {id: 1, game_id: 0, service_id: 0},
-        {id: 1, game_id: 0, service_id: 0},
-        {id: 1, game_id: 0, service_id: 0}
-    });
+        {game_id: 1, service_id: 1},
+        {game_id: 2, service_id: 1},
+        {game_id: 3, service_id: 2},
+        {game_id: 4, service_id: 2},
+        {game_id: 5, service_id: 1},
+        {game_id: 6, service_id: 3},
+        {game_id: 2, service_id: 3},
+        {game_id: 5, service_id: 3}
+    ]);
 };
