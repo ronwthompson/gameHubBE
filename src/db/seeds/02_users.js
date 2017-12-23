@@ -5,9 +5,9 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        {id: 1, service_id: 0, game_id: 0, request_id: 0, stats_id: 0, username: '', password: '', acount_created_on: '', last_login: ''},
-        {id: 1, service_id: 0, game_id: 0, request_id: 0, stats_id: 0, username: '', password: '', acount_created_on: '', last_login: ''},
-        {id: 1, service_id: 0, game_id: 0, request_id: 0, stats_id: 0, username: '', password: '', acount_created_on: '', last_login: ''}
+        {username: 'galvanize', password: 'abc123', acount_created_on: '2001-12-23 14:39:53.662522-05', last_login: '2001-12-23 14:39:53.662522-05'},
+        {username: 'steamUser', password: '12345', acount_created_on: '2001-12-23 14:39:53.662522-05', last_login: '2001-12-23 14:39:53.662522-05'},
+        {username: 'xXx420_noscopexXx', password: 'smokeweedsomedays', acount_created_on: '2001-12-23 14:39:53.662522-05', last_login: '2001-12-23 14:39:53.662522-05'}
       ]);
     });
 };

@@ -5,9 +5,9 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('services').insert([
-        {id: 1, stats_id: 0, service_name: '', api_key: ''},
-        {id: 1, stats_id: 0, service_name: '', api_key: ''},
-        {id: 1, stats_id: 0, service_name: '', api_key: ''}
+        {service_name: 'Steam', api_key: 'abc123'},
+        {service_name: 'Blizzard', api_key: 'abc123'},
+        {service_name: 'xBox Live', api_key: 'acb123'}
       ]);
     });
 };
