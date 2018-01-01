@@ -1,14 +1,11 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const path = require('path')
 const request = require('request')
 
-const APIKey = 'AE44BDEA9EED0E8975B7111F3C13D706'
-const testPart1 = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='
-const testPart2 = '&steamids=76561197960435530' //gets Robin Walker's info
 
-const testUrl = `${testPart1}${APIKey}${testPart2}`
 
 const app = express()
 app.use(bodyParser.json())
@@ -21,6 +18,8 @@ app.use(bodyParser.json())
 
 // const profile = require('./src/routes/profile');
 // app.use('/api/profile', profile);
+const services = require('./src/routes/services')
+app.use('/services', services)
 
 const users = require('./src/routes/users')
 app.use('/api/users', users)
@@ -42,10 +41,6 @@ app.use((err, _req, res, _next) => {
 });
 
 const port = process.env.PORT || 3000;
-
-request(testUrl, function(error, response, body){
-    console.log(body)
-})
 
 app.listen(port, () => {
   console.log('listening on port', port);
