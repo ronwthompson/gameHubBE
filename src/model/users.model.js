@@ -19,6 +19,10 @@ class User extends Model {
         return db('users').select('id', 'username', 'isAdmin', 'account_created_on', 'last_login').where({ id }).first()
     }
 
+    static oneUsersGames(id){
+        return db('stats').select('service_id', 'game_id', 'wins', 'losses').where({ user_id: id })
+    }
+
     static oneAdmin(id) {
         return db('users').select('id', 'username', 'email', 'isAdmin', 'account_created_on', 'last_login').where({ id }).first()
     }

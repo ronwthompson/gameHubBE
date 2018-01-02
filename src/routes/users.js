@@ -5,7 +5,7 @@ const ctrl = require('../controller/users.controller')
 const authCtrl = require('../controller/auth.controller')
 
 // only administrators can view list of users. 
-router.get('/', authCtrl.verifyToken, authCtrl.isAdmin, ctrl.index) //complete
+router.get('/', authCtrl.verifyToken, authCtrl.isAdmin, ctrl.index) //complete jk its not
 // admins and the user themselves can view their own info
 router.get('/:id', authCtrl.verifyToken, authCtrl.isUser, ctrl.show) //complete
 // no router.post('/') route, because auth.register creates the user

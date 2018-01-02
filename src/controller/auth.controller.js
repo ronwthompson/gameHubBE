@@ -63,8 +63,7 @@ class AuthController extends Controller {
             return next()
         } else {
             Model.show(req.token.id).then(user => {
-                console.log(user)
-                res.userType = user.admin ? 'admin' : 'user'
+                res.userType = user.isAdmin ? 'admin' : 'user'
                 console.log(`Request called by ${res.userType}`)
                 return next()
             })

@@ -26,11 +26,12 @@ class UsersController extends Controller {
                 })
             })
         } else if (res.userType === 'user' || res.userType === 'guest') {
-            Model.oneSafe(req.params.id).then(response => {
-                res.json({
-                    userType: res.userType,
-                    users: response
-                })
+            let allInfo = {}
+            Promise.all([Model.oneSafe(req.params.id),Model.oneUsersGames(req.params.id)]).then(response => {
+                allInfo.userType = res.userType
+                allInfo.users = response[0]
+                allInfo.games = response[1]
+                res.json(allInfo)
             })
         } else {
             next({ status: 401, message: 'Unidentified userType' })

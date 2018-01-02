@@ -24,7 +24,7 @@ module.exports = name => {
       Model.index()
       .then(response => res.json({ 
         userType: res.userType,
-        name: response }))
+        users: response }))
       .catch(errorHandler(next))
     }
 
