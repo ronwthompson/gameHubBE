@@ -1,5 +1,5 @@
 const Controller = require('./Controller')('users')
-const Model = require(`../models/users.model`)
+const Model = require(`../model/users.model`)
 const encryption = require('../encryption')
 const jwt = require('jsonwebtoken')
 
