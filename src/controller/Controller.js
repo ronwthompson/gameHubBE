@@ -1,5 +1,5 @@
 module.exports = name => {
-  const Model = require(`../model/${modelName}.model`)
+  const Model = require(`../model/${name}.model`)
 
   const errorHandler = next => {
     return error => {
@@ -22,7 +22,9 @@ module.exports = name => {
 
     static index (req, res, next) {
       Model.index()
-      .then(response => res.json({ name: response }))
+      .then(response => res.json({ 
+        userType: res.userType,
+        name: response }))
       .catch(errorHandler(next))
     }
 
