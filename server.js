@@ -1,11 +1,9 @@
-require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const path = require('path')
 const request = require('request')
-
-
+require('dotenv').config({path: __dirname + '/.env'})
 
 const app = express()
 app.use(bodyParser.json())
