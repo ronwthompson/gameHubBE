@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // const ctrl = require('../controller/users.controller')
-// authCtrl = require('../controller/auth.controller')
+// const authCtrl = require('../controller/auth.controller')
 
 // // only administrators can view list of users. 
 // router.get('/', authCtrl.verifyToken, ctrl.isAdmin, ctrl.index)
