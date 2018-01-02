@@ -44,7 +44,7 @@ class AuthController extends Controller {
     }
 
     static verifyToken(req, res, next) {
-        let token = req.headers.auth
+        let [bearer, token] = req.headers.auth ? req.headers.auth.split(' ') : [null, null]
         jwt.verify(token, process.env.TOKEN_SECRET, (err, vToken) => {
             if (err) {
                 console.log('ERROR: ', err.message)
@@ -63,6 +63,7 @@ class AuthController extends Controller {
             return next()
         } else {
             Model.show(req.token.id).then(user => {
+                console.log(user)
                 res.userType = user.admin ? 'admin' : 'user'
                 console.log(`Request called by ${res.userType}`)
                 return next()
@@ -71,7 +72,6 @@ class AuthController extends Controller {
     }
 
     static isAdmin(req, res, next) {
-        console.log(res.userType)
         if (res.userType === 'admin') {
             return next()
         } else {

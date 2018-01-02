@@ -21,7 +21,6 @@ module.exports = name => {
     }
 
     static index (req, res, next) {
-      console.log('controller')
       Model.index()
       .then(response => res.json({ 
         userType: res.userType,

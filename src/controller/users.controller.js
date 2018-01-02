@@ -14,7 +14,6 @@ class UsersController extends Controller {
 
     static addDefaults(req, res, next) {
         req.body.isAdmin = req.body.isAdmin === undefined ? false : req.body.isAdmin
-
         next()
     }
 
