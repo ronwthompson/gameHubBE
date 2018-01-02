@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/ronwthompson/gameHubBE#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",

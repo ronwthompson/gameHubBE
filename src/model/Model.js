@@ -13,15 +13,15 @@ module.exports = (tableName) => {
     }
 
     static create(body) {
-      return db(tableName).insert(body).returning('*')
+      return db(tableName).insert(body).returning('*').then(([result]) => result)
     }
 
     static update(id, body) {
-      return db(tableName).where({ id }).update(body).returning('*')
+      return db(tableName).where({ id }).update(body).returning('*').then(([result]) => result)
     }
 
     static delete(id) {
-      return db(tableName).where({ id }).returning('*').del()
+      return db(tableName).where({ id }).returning('*').del().then(([result]) => result)
     }
   }
 
