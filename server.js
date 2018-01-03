@@ -13,14 +13,6 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-// passport.serializeUser(function(user, done) {
-//   done(null, user)
-// })
-
-// passport.deserializeUser(function(obj, done) {
-//   done(null, obj)
-// })
-
 passport.use(new SteamStrategy({
     returnURL: 'http://localhost:3000/auth/steam/return', //website to redirect to AFTER openID login
     realm: 'http://localhost:3000/',
