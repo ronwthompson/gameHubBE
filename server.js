@@ -28,7 +28,6 @@ passport.use(new SteamStrategy({
   },
   function(identifier, profile, done) {
     User.findByOpenID({ openId: identifier }, function (err, user) {
-      console.log('passport success')
       return done(err, user)
     })
   }
@@ -71,7 +70,7 @@ app.use((err, _req, res, _next) => {
   res.status(status).json({ message, status });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
   console.log('listening on port', port);
