@@ -36,6 +36,14 @@ class UsersController extends Controller {
             next({ status: 401, message: 'Unidentified userType' })
         }
     }
+
+    static getSteam(req, res, next){
+        Model.getOneSteam(req.params.id).then(response =>{
+            res.json({
+                steamId: response
+            })
+        })
+    }
 }
 
 module.exports = UsersController

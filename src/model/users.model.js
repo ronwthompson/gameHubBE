@@ -19,6 +19,14 @@ class User extends Model {
         return db('users').select('id', 'username', 'isAdmin', 'account_created_on', 'last_login').where({ id }).first()
     }
 
+    static getOneSteam(id){
+        return db('user_services').select('users_service_id').where({ id }).first()
+    }
+
+    static updateSteamId(id, body) {
+        return db('user_services').where({ id }).update(body).returning('*')
+    }
+
     static oneUsersGames(id){
         return db('stats').select('service_id', 'game_id', 'wins', 'losses').where({ user_id: id })
     }

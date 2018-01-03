@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     table.integer('service_id').notNullable().defaultsTo(0)
     table.foreign('service_id').references('services.id').onDelete('CASCADE')
 
-    table.string('users_service_id').notNullable().defaultsTo(123)
+    table.string('users_service_id').defaultsTo(null)
 
   })
 };
