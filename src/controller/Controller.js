@@ -34,6 +34,7 @@ module.exports = name => {
     }
 
     static create(req, res, next) {
+      delete req.body.passCheck
       Model.create(req.body)
         .then(response => res.json({ name: response }))
     }
