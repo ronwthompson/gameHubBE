@@ -19,12 +19,12 @@ class User extends Model {
         return db('users').select('id', 'username', 'isAdmin', 'account_created_on', 'last_login').where({ id }).first()
     }
 
-    static getOneSteam(id){
-        return db('user_services').select('users_service_id').where({ id }).first()
+    static getOneSteam(user_id){
+        return db('user_services').select('users_service_id').where({ user_id }).first()
     }
 
-    static updateSteamId(id, body) {
-        return db('user_services').where({ id }).update(body).returning('*')
+    static updateSteamId(user_id, users_service_id) {
+        return db('user_services').insert({user_id, users_service_id, service_id: 1})
     }
 
     static oneUsersGames(id){

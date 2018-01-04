@@ -45,7 +45,7 @@ module.exports = name => {
     }
 
     static updateSteamId(req, res, next) {
-      Model.updateSteamId(req.params.id, req.body)
+      Model.updateSteamId(req.params.id, req.body.users_service_id)
         .then(response => res.json({ name: response }))
     }
 

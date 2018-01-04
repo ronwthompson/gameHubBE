@@ -44,8 +44,10 @@ class AuthController extends Controller {
     }
 
     static verifyToken(req, res, next) {
+        console.log('header: ',req.headers.auth)
         let [bearer, token] = req.headers.auth ? req.headers.auth.split(' ') : [null, null]
         jwt.verify(token, process.env.TOKEN_SECRET, (err, vToken) => {
+            console.log('vtoken:', vToken)
             if (err) {
                 console.log('ERROR: ', err.message)
                 req.token = null
@@ -63,6 +65,7 @@ class AuthController extends Controller {
             return next()
         } else {
             Model.show(req.token.id).then(user => {
+                console.log('user:',user)
                 res.userType = user.isAdmin ? 'admin' : 'user'
                 console.log(`Request called by ${res.userType}`)
                 return next()
@@ -96,6 +99,7 @@ class AuthController extends Controller {
     }
 
     static currentUser(req, res, next) {
+        console.log('current user token: ',req.token)
         if (req.token) {
             Model.oneSafe(req.token.id).then(userData => {
                 userData.userType = res.userType
