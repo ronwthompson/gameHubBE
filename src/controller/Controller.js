@@ -15,7 +15,7 @@ module.exports = name => {
     static exists (req, res, next) {
       const status = 404
       const message = `ID of ${req.params.id} not found`
-
+      console.log('controller', req.params.id)
       Model.show(req.params.id)
       .then(response => response ? next() : next({ status, message }))
     }

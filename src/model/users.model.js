@@ -24,6 +24,7 @@ class User extends Model {
     }
 
     static updateSteamId(user_id, users_service_id) {
+        console.log('user model ',user_id, users_service_id)
         return db('user_services').insert({user_id, users_service_id, service_id: 1})
     }
 

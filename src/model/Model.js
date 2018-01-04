@@ -17,6 +17,7 @@ module.exports = (tableName) => {
     }
 
     static update(id, body) {
+      console.log('modal ',id, body)
       return db(tableName).where({ id }).update(body).returning('*').then(([result]) => result)
     }
 
