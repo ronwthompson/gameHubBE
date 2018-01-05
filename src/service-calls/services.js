@@ -18,6 +18,10 @@ function allUserInfo (req, res, next) {
    Promise.all(promiseList)
     .then(response => {
         response.forEach((rs, i) => {
+            if (i === 1 && !rs.response.games) {
+                console.log('BROKEN STEAM CALL THING')
+                rs.response.games = []
+            }
             _.assign(responseObject, {[i]: rs})
         })
         res.send(responseObject)
