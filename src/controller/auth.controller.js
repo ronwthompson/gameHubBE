@@ -102,8 +102,11 @@ class AuthController extends Controller {
         console.log('current user token: ',req.token)
         if (req.token) {
             Model.oneSafe(req.token.id).then(userData => {
-                userData.userType = res.userType
-                res.json({ currentUser: userData })
+                Model.getOneSteam(req.token.id).then(steamId => {
+                    steamId = steamId.users_service_id
+                    userData.userType = res.userType
+                    res.json({ currentUser: Object.assign(userData, { steamId: steamId || null}) })
+                })
             })
         } else {
             res.json({ currentUser: { id: null } })

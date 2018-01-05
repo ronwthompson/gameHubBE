@@ -4,11 +4,11 @@ const Model = require('./Model')('users')
 class User extends Model {
 
     static oneFromEmail(email) {
-        return db('users').where({ email }).first()
+        return db('users').whereRaw('LOWER(email) LIKE ?', '%' + email.toLowerCase() + '%').first()
     }
 
     static oneFromUsername(username) {
-        return db('users').where({ username }).first()
+        return db('users').whereRaw('LOWER(username) LIKE ?', '%' + username.toLowerCase() + '%').first()
     }
 
     static index() {
