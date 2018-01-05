@@ -5,6 +5,7 @@ const ctrl = require('../controller/users.controller')
 const authCtrl = require('../controller/auth.controller')
 
 router.get('/current', authCtrl.verifyToken, authCtrl.currentUser)
+router.get('/search/:username_or_email', authCtrl.verifyToken, ctrl.userSearch)
 // only administrators can view list of users. 
 // admins and the user themselves can view their own info
 router.get('/:id', authCtrl.verifyToken, authCtrl.isUser, ctrl.show) //complete

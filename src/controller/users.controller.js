@@ -16,6 +16,26 @@ class UsersController extends Controller {
         next()
     }
 
+    static userSearch(req, res, next) {
+        Promise.all([Model.oneFromUsername(req.params.username_or_email),
+            Model.oneFromEmail(req.params.username_or_email)])
+            .then(possibilities => {
+                let user = possibilities.filter(foundOrNah => {
+                    return foundOrNah
+                })[0]
+                if (user) {
+                    Model.getOneSteam(user.id).then(steamId => {
+                        steamId = steamId.users_service_id
+                        let userData = {userType: res.userType}
+                        delete user.password
+                        res.json({ currentUser: userData, user: Object.assign(user, { steamId: steamId || null }) })
+                    })
+                } else {
+                    return next({ status: 404, message: `No user with email or username of ${req.params.username_or_email} found.`})
+                }
+            })
+    }
+
     static show(req, res, next) {
         if (res.userType === 'admin') {
             Model.oneAdmin(req.params.id).then(response => {

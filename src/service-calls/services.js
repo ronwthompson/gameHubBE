@@ -17,8 +17,8 @@ function allUserInfo (req, res, next) {
     ]
    Promise.all(promiseList)
     .then(response => {
-        response.forEach(rs => {
-            _.merge(responseObject, rs)
+        response.forEach((rs, i) => {
+            _.assign(responseObject, {[i]: rs})
         })
         res.send(responseObject)
     })
