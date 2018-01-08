@@ -15,7 +15,7 @@ const getPlayerSummaries = (queryObject) => {
     // ** Comma-delimited list (an array works here) of 64 bit Steam IDs to return profile information for.  Up to 100 Steam IDs can be requested.
     return `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_API_KEY}${flattenQuery(queryObject)}`
 }
-
+//http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=AE44BDEA9EED0E8975B7111F3C13D706&steamids=null
 const getFriendList = (queryObject) => {
     // * '''steamid''' REQUIRED
     // ** 64 bit Steam ID to return friend list for.
@@ -44,7 +44,7 @@ const getOwnedGames = (queryObject) => {
     // *'''include_played_free_games''' (1 = true)
     // ** By default, free games like Team Fortress 2 are excluded (as technically everyone owns them).  If include_played_free_games is set, they will be returned if the player has played them at some point.  This is the same behavior as the games list on the Steam Community.
     return `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_API_KEY}&include_appinfo=1${flattenQuery(queryObject)}`
-}
+} 
 
 const getRecentlyPlayedGames = (queryObject) => {
     // *'''steamid''' REQUIRED

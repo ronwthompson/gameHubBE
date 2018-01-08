@@ -15,7 +15,7 @@ function allUserInfo (req, res, next) {
         rp(services.steam.getrecentlyplayedgames({steamid: req.body.steamid})).json(),
         rp(services.steam.getplayerbans({steamids: req.body.steamid})).json()
     ]
-   Promise.all(promiseList)
+    Promise.all(promiseList)
     .then(response => {
         response.forEach((rs, i) => {
             if (i === 1 && !rs.response.games) {
