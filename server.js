@@ -14,8 +14,8 @@ app.use(cors())
 app.use(bodyParser.json())
 
 passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:3000/auth/steam/return', //website to redirect to AFTER openID login
-    realm: 'http://localhost:3000/',
+    returnURL: 'https://gamehubback.herokuapp.com/auth/steam/return', //website to redirect to AFTER openID login
+    realm: 'https://gamehubback.herokuapp.com/',
     apiKey: process.env.STEAM_API_KEY
   },
   function(identifier, profile, done) {
