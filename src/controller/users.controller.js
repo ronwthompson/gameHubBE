@@ -12,6 +12,8 @@ class UsersController extends Controller {
     }
 
     static addDefaults(req, res, next) {
+        // Is the value here a boolean? If so, then you could just do:
+        // req.body.isAdmin = !!req.body.isAdmin
         req.body.isAdmin = req.body.isAdmin === undefined ? false : req.body.isAdmin
         next()
     }
@@ -20,19 +22,15 @@ class UsersController extends Controller {
         Promise.all([Model.oneFromUsername(req.params.username_or_email),
             Model.oneFromEmail(req.params.username_or_email)])
             .then(possibilities => {
-                let user = possibilities.filter(foundOrNah => {
-                    return foundOrNah
-                })[0]
-                if (user) {
-                    Model.getOneSteam(user.id).then(steamId => {
-                        steamId = steamId.users_service_id
-                        let userData = {userType: res.userType}
-                        delete user.password
-                        res.json({ currentUser: userData, user: Object.assign(user, { steamId: steamId || null }) })
-                    })
-                } else {
-                    return next({ status: 404, message: `No user with email or username of ${req.params.username_or_email} found.`})
-                }
+                let user = possibilities.find(foundOrNah => foundOrNah)
+                if (!user) return next({ status: 404, message: `No user with email or username of ${req.params.username_or_email} found.`})
+
+                Model.getOneSteam(user.id).then(steamId => {
+                    steamId = steamId.users_service_id
+                    let userData = {userType: res.userType}
+                    delete user.password
+                    res.json({ currentUser: userData, user: Object.assign(user, { steamId: steamId || null }) })
+                })
             })
     }
 
