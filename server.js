@@ -14,6 +14,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 passport.use(new SteamStrategy({
+    // You could have these URLs be environment variables as well
     returnURL: 'https://gamehubback.herokuapp.com/auth/steam/return', //website to redirect to AFTER openID login
     realm: 'https://gamehubback.herokuapp.com/',
     apiKey: process.env.STEAM_API_KEY
@@ -27,15 +28,6 @@ passport.use(new SteamStrategy({
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-// const gamerProfiles = require('./src/routes/gamerProfiles')
-// app.use('/api/gamers/:id/profile', gamerProfiles)
-
-// const gamer = require('./src/routes/gamer');
-// app.use('/api/gamer', gamer);
-
-// const profile = require('./src/routes/profile');
-// app.use('/api/profile', profile);
 
 const services = require('./src/routes/services')
 app.use('/services', services)
