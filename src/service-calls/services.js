@@ -28,20 +28,13 @@ function allUserInfo (req, res, next) {
     })
 }
 
-// async function getSteamFavStats (req, res, next) {
-//     let favList = req.body.appids
-//     delete req.body.appids
-//     let promiseList = favList.map(appid => {
-//         req.body.appid = appid
-//         services.steam.getUserStatsForGame(req.body)
-//     })
-// }
-
 async function shapeRequest (req, res, next) {
     let service = req.params.service_name.toLowerCase()
     let command = req.params.request_name.toLowerCase()
     let queryObject = req.body
 
+    // This is a good example of naming things well. And is pretty clever!
+    // (Which, isn't _always_ a good thing, but it's prety neat here.)
     await request(services[service][command](queryObject), function (error, response, body) {
         res.send(body)
     })
